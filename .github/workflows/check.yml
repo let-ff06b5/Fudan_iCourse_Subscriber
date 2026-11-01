@@ -171,14 +171,10 @@ jobs:
           SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
-          # All secrets, JSON-encoded. provider_env.py exports only the
-          # vars named by config.MODEL_PROVIDERS (api_key_env /
-          # base_url_env), so user-defined providers with custom env-var
-          # names work without editing this workflow.
-          SECRETS_CONTEXT: ${{ toJSON(secrets) }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          eval "$(python scripts/provider_env.py)"
-          unset SECRETS_CONTEXT
           python -u main.py
 
       - name: Deploy database to data branch
