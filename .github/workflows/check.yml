@@ -166,6 +166,7 @@ jobs:
         timeout-minutes: 350
         env:
           StuId: ${{ secrets.STUID }}
+          UIS_TOTP_SECRET: ${{ secrets.UIS_TOTP_SECRET }}
           UISPsw: ${{ secrets.UISPSW }}
           COURSE_IDS: ${{ secrets.COURSE_IDS }}
           CRAWL_TERM: ${{ secrets.CRAWL_TERM }}
